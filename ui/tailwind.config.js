@@ -6,7 +6,11 @@ export default {
         "./electron/**/*.{html,svelte,js,ts,}"
     ],
     theme: {
-        extend: {},
+        extend: {
+            fontFamily: {
+                lato: 'lato, sans-serif, serif',
+            },
+        },
     },
     plugins: [],
 }

@@ -21,8 +21,13 @@ const createWindow = () => {
     
     // Create the browser window.
     mainWindow = new BrowserWindow({
-        width: 600,
-        height: 700,
+        width: 460,
+        height: 480,
+        minWidth: 400,
+        maxWidth: 600,
+        minHeight: 440,
+        maxHeight: 660,
+        maximizable: false,
         webPreferences: {
             preload: path.join(__dirname, 'preload.js')
         }
@@ -35,6 +40,12 @@ const createWindow = () => {
 
         // if your vite app is running on a different port, change it here
         mainWindow.loadURL('http://localhost:5173/');
+
+        mainWindow.webContents.on('before-input-event', (_, input) => {
+            if (input.type === 'keyDown' && input.key === 'F12') {
+              mainWindow.webContents.openDevTools({ mode: 'detach' });
+            }
+        });
 
         log('Electron running in dev mode: 🧪')
 

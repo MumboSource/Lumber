@@ -1,15 +1,14 @@
 <script>
-	import svelteLogo from "./assets/svelte.svg";
-	import viteLogo from "/vite.svg";
-	import Counter from "./lib/Counter.svelte";
-	import electronLogo from "./assets/electron.svg";
-	import tailwindLogo from "./assets/tailwind.svg";
+	import Executables from './lib/executables.svelte';
+	import { Router, Link, Route } from "svelte-routing";
+	import LoadingPage from './lib/loading-page.svelte';
 
-	const nodeVersion = api.node();
-	const chromeVersion = api.chrome();
-	const electronVersion = api.electron();
+	export let url = "";
 </script>
 
-<main class="w-full h-full">
-	Hi
-</main>
+<Router {url}>
+	<div class="w-full h-full">
+		<Route path="/exe-list" component={Executables} />
+		<Route path="/"><LoadingPage /></Route>
+	</div>
+</Router>
