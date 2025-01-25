@@ -1,39 +1,38 @@
 {
-  "name": "ui",
-  "version": "1.0.0",
-  "description": "An Electron application with Svelte",
-  "main": "./out/main/index.js",
-  "author": "example.com",
-  "homepage": "https://electron-vite.org",
+  "name": "vite-svelte-electron-tailwind",
+  "description": "Vite + Svelte + Electron + Tailwind",
+  "license": "MIT",
+  "private": true,
+  "version": "0.0.0",
+  "type": "module",
+  "main": "electron/main.cjs",
   "scripts": {
-    "format": "prettier --plugin prettier-plugin-svelte --write .",
-    "lint": "eslint . --ext .js,.jsx,.cjs,.mjs,.ts,.tsx,.cts,.mts --fix",
-    "start": "electron-vite preview",
-    "dev": "electron-vite dev",
-    "build": "electron-vite build",
-    "postinstall": "electron-builder install-app-deps",
-    "build:unpack": "npm run build && electron-builder --dir",
-    "build:win": "npm run build && electron-builder --win",
-    "build:mac": "npm run build && electron-builder --mac",
-    "build:linux": "npm run build && electron-builder --linux"
-  },
-  "dependencies": {
-    "@electron-toolkit/preload": "^3.0.1",
-    "@electron-toolkit/utils": "^3.0.0",
-    "electron-updater": "^6.1.7"
+    "dev": "concurrently --kill-others \"vite\" \"npm run dev:electron\"",
+    "dev:vite": "vite",
+    "dev:electron": "cross-env DEV_ENV=true electron .",
+    "build": "vite build",
+    "preview": "vite preview",
+    "package": "npm run build && electron-forge package",
+    "make": "npm run build && electron-forge make"
   },
   "devDependencies": {
-    "@electron-toolkit/eslint-config": "^1.0.2",
-    "@electron-toolkit/eslint-config-prettier": "^2.0.0",
-    "@sveltejs/vite-plugin-svelte": "^3.1.1",
-    "electron": "^31.0.2",
-    "electron-builder": "^24.13.3",
-    "electron-vite": "^2.3.0",
-    "eslint": "^8.57.0",
-    "eslint-plugin-svelte": "^2.41.0",
-    "prettier": "^3.3.2",
-    "prettier-plugin-svelte": "^3.2.5",
-    "svelte": "^4.2.18",
-    "vite": "^5.3.1"
+    "@electron-forge/cli": "^7.6.0",
+    "@electron-forge/maker-deb": "^7.6.0",
+    "@electron-forge/maker-rpm": "^7.6.0",
+    "@electron-forge/maker-squirrel": "^7.6.0",
+    "@electron-forge/maker-zip": "^7.6.0",
+    "@sveltejs/vite-plugin-svelte": "^5.0.3",
+    "autoprefixer": "^10.4.20",
+    "concurrently": "^9.1.2",
+    "cross-env": "^7.0.3",
+    "electron": "^33.2.1",
+    "electron-reload": "^2.0.0-alpha.1",
+    "postcss": "^8.4.49",
+    "svelte": "^5.16.1",
+    "tailwindcss": "^3.4.17",
+    "vite": "^6.0.7"
+  },
+  "dependencies": {
+    "electron-squirrel-startup": "^1.0.1"
   }
 }
