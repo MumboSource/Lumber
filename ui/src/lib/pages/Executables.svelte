@@ -1,6 +1,6 @@
 <script>
-    import testIcon from '../assets/test-img.png'
-    import rightArrow from '../assets/right-arrow.svg'
+    import testIcon from '../../assets/test-img.png'
+    import rightArrow from '../../assets/right-arrow.svg'
     import { navigate } from 'svelte-routing';
 
     let scrollY = 0;

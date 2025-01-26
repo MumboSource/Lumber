@@ -1,6 +1,6 @@
 <script>
-    import testIcon from '../assets/test-img.png'
-    import backArrow from '../assets/left-arrow.svg'
+    import testIcon from '../../assets/test-img.png'
+    import backArrow from '../../assets/left-arrow.svg'
     import { navigate } from 'svelte-routing';
 </script>
 
