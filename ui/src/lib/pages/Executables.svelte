@@ -2,6 +2,7 @@
     import testIcon from '../../assets/test-img.png'
     import rightArrow from '../../assets/right-arrow.svg'
     import { navigate } from 'svelte-routing';
+    import Navbar from '../Navbar.svelte';
 
     let scrollY = 0;
     let maxY = 0;
@@ -25,7 +26,7 @@
 
 <svelte:window bind:scrollY bind:innerHeight={screenHeight} />
 
-
+<Navbar title="Lumber" icon={undefined}></Navbar>
 <div bind:clientHeight={maxY}>
     <div class="fixed bottom-0 left-0 w-full h-32 pointer-events-none" style="background: linear-gradient(180deg, rgba(255, 255, 255, 0.00) 30%, #FFFFFFF0 100%); opacity: {bottomOpacity/-20};"></div>
     <div class="fixed top-0 left-0 w-full h-32 pointer-events-none" style="background: linear-gradient(0deg, rgba(255, 255, 255, 0.00) 50%, #FFFFFFE0 100%); opacity: {topOpacity/20};"></div>
