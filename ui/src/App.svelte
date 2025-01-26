@@ -9,6 +9,8 @@
 
 	import '@fontsource/lato';
 	import '@fontsource/fira-code';
+    import ExecutableDetails from './lib/pages/ExecutableDetails.svelte';
+    import FlowChart from './lib/pages/FlowChart.svelte';
 
 	export let url = "";
 
@@ -26,10 +28,21 @@
 		<Route path="/exe-list">
 			<Executables bundle/>
 		</Route>
-		<Route path="/exe-details" component={ExeDetails} />
-		<Route path="/exe-info" component={ApplicationInfo} />
-		<Route path="/sys-info" component={SystemInfo} />
-		<Route path="/file-events" component={FileEvents} />
+		<Route path="/exe-details">
+			<ExecutableDetails />
+		</Route>
+		<Route path="/exe-info">
+			<ApplicationInfo />
+		</Route>
+		<Route path="/sys-info">
+			<SystemInfo />
+		</Route>
+		<Route path="/flow-chart">
+			<FlowChart />
+		</Route>
+		<Route path="/file-events">
+			<FileEvents />
+		</Route>
 
 		<Route path="/"><LoadingPage /></Route>
 	</div>
