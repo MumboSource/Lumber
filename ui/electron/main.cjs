@@ -59,6 +59,34 @@ const createWindow = () => {
     }
 }
 
+const windowSetSize = BrowserWindow.prototype.setSize;
+BrowserWindow.prototype.setSize = function (
+	width,
+	height,
+	animate
+) {
+	if (animate) {
+		const [startWidth, startHeight] = this.getSize();
+		const [targetWidth, targetHeight] = [width, height];
+
+		const duration = 200;
+		const easing = (t, b, c, d) => (t == d ? b + c : c * (-Math.pow(2, (-10 * t) / d) + 1) + b);
+
+		let currentFrame = 0;
+		const updateSize = () => {
+			currentFrame++;
+			windowSetSize.apply(this, [
+				Math.round(easing(currentFrame, startWidth, targetWidth - startWidth, duration)),
+				Math.round(easing(currentFrame, startHeight, targetHeight - startHeight, duration)),
+			]);
+			if (currentFrame < duration) setImmediate(updateSize);
+		};
+		setImmediate(updateSize);
+	} else {
+		windowSetSize.apply(this, [width, height]);
+	}
+};
+
 // This method will be called when Electron has finished
 // initialization and is ready to create browser windows.
 // Some APIs can only be used after this event occurs.
@@ -84,6 +112,17 @@ ipcMain.on("unmaximize", () => {
 ipcMain.on("isMaximized", () => {
     ipcMain.emit("isMaximizedResponse", mainWindow.isMaximized());
 });
+
+ipcMain.on("analyze", () => {
+    mainWindow.setResizable(false);
+    mainWindow.setSize(1100, 700, true);
+    setTimeout(() => {
+        mainWindow.setResizable(true);
+        mainWindow.setMinimumSize(1100, 700);
+        mainWindow.setMaximumSize(1920, 1200);
+        mainWindow.setSize(1100, 700);
+    }, 1000);
+})
 
 ipcMain.on("close", () => {
     mainWindow.close();

@@ -6,6 +6,7 @@ contextBridge.exposeInMainWorld(
         minimize: () => ipcRenderer.send('minimize'),
         maximize: () => ipcRenderer.send('maximize'),
         unmaximize: () => ipcRenderer.send('unmaximize'),
+        startAnalyze: () => ipcRenderer.send('analyze'),
         isMaximized: () => {
             return new Promise((res, rej) => {
                 ipcRenderer.send('isMaximized');
