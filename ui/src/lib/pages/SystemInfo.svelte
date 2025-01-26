@@ -21,7 +21,7 @@
 </script>
 
 <div class="flex flex-col w-screen h-screen">
-    <Navbar title="Goat executable" maximizable={true} />
+    <Navbar title="McAfee Pro Crack" maximizable={true} />
     <div class="flex flex-row w-full grow">
         <Sidebar />
         <div class="flex flex-col w-full">

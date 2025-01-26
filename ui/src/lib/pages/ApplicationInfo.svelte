@@ -6,7 +6,7 @@
 </script>
 
 <div class="flex flex-col w-screen h-screen">
-    <Navbar title="Goat executable" maximizable={true} />
+    <Navbar title="McAfee Pro Crack" maximizable={true} />
     <div class="flex flex-row w-full">
         <Sidebar />
         <div class="flex flex-row p-5 gap-6 flex-grow overflow-y-scroll max-h-[calc(100vh-4rem)] no-scrollbar">

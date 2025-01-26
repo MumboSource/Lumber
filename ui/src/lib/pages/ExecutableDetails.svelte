@@ -1,5 +1,5 @@
 <script>
-    import testIcon from '../../assets/test-img.png'
+    import testIcon from '../../../public/icon.png'
     import backArrow from '../../assets/left-arrow.svg'
     import { navigate } from 'svelte-routing';
     import Navbar from '../Navbar.svelte';
@@ -10,11 +10,11 @@
     }
 </script>
 
-<Navbar title="Goat executable" icon={testIcon} backUrl="/exe-list"></Navbar>
+<Navbar title="McAfee Pro Crack" icon={testIcon} backUrl="/exe-list"></Navbar>
 <div class="flex flex-col">
     <div class="flex flex-col px-5 py-2">
         <div class="opacity-50">Location</div>
-        <div class="text-xl">C:\Users\9281239\Downloads\goat-executable\run.exe</div>
+        <div class="text-xl">C:\Users\9281239\Downloads\mcafee-pro\run.exe</div>
     </div>
     <div class="flex flex-col px-5 py-2">
         <div class="opacity-50">Size</div>

@@ -5,7 +5,7 @@
     import close from '../assets/close.svg'
     import { navigate } from 'svelte-routing'
 
-    import testIcon from '../assets/test-img.png'
+    import testIcon from '../../public/icon.png'
     import backArrow from '../assets/left-arrow.svg'
     import { onMount } from 'svelte';
 
