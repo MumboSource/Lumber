@@ -4,23 +4,21 @@
     import close from '../assets/close.svg'
 
     import testIcon from '../assets/test-img.png'
-
-    console.log(window.electron)
 </script>
 
 <div class="flex h-16 w-full pl-3 gap-3 items-center" style="border-bottom: 2px solid #E1E1E1;">
     <div class="min-w-8 max-w-8 py-3" style="app-region: drag;"><img class="w-full" src={testIcon} alt="icon"/></div>
     <div class="text-2xl grow" style="app-region: drag;">The goat executable</div>
 
-    <div class="justify-self-end flex w-32 h-full items-center justify-between px-3 gap-2" style="border-left: 2px solid #E1E1E1;">
-        <button on:click={() => window.electron.minimize()} >
-            <img src={min} alt="select" class="nextButton w-12 rounded-[5px] transition-all" />
+    <div class="justify-self-end flex h-full items-center justify-around" style="border-left: 2px solid #E1E1E1;">
+        <button class="nextButton h-full px-3" on:click={() => window.electron.minimize()} >
+            <img src={min} alt="select" class="scale-75 w-12 transition-all" />
         </button>
-        <button on:click={() => window.electron.maximize()} >
-            <img src={max} alt="select" class="nextButton w-12 rounded-[5px] transition-all" />
+        <button class="nextButton h-full px-3" on:click={() => window.electron.maximize()} >
+            <img src={max} alt="select" class="scale-75 w-12 transition-all" />
         </button>
-        <button on:click={() => window.electron.close()} >
-            <img src={close} alt="select" class="nextButton w-12 rounded-[5px] transition-all" />
+        <button class="nextButton h-full px-3" on:click={() => window.electron.close()} >
+            <img src={close} alt="select" class="scale-75 w-12 transition-all" />
         </button>
     </div>
 </div>
