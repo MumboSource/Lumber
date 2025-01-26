@@ -1,9 +1,9 @@
 <script>
-	import Executables from './lib/executables.svelte';
-	import ExeDetails from './lib/exe-details.svelte';
+	import Executables from './lib/pages/Executables.svelte';
+	import ExeDetails from './lib/pages/ExecutableDetails.svelte';
 	import { Router, Link, Route } from "svelte-routing";
-	import LoadingPage from './lib/loading-page.svelte';
-	import ApplicationInfo from './lib/application-info.svelte';
+	import LoadingPage from './lib/pages/LoadingPage.svelte';
+	import ApplicationInfo from './lib/pages/ApplicationInfo.svelte';
 
 	import '@fontsource/lato';
 
