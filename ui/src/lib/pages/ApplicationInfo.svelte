@@ -1,7 +1,7 @@
 <script>
 	import InfoSquare from './../InfoSquare.svelte';
     import Sidebar from "../Sidebar.svelte";
-    import MainNavbar from "../main-navbar.svelte";
+    import MainNavbar from "../Navbar.svelte";
 	import '@fontsource/lato';
 </script>
 

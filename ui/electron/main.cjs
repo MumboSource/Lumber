@@ -80,6 +80,13 @@ ipcMain.on("minimize", () => {
 ipcMain.on("maximize", () => {
     mainWindow.maximize();
 });
+ipcMain.on("unmaximize", () => {
+    mainWindow.unmaximize();
+});
+
+ipcMain.on("isMaximized", () => {
+    ipcMain.emit("isMaximizedResponse", mainWindow.isMaximized());
+});
 
 ipcMain.on("close", () => {
     mainWindow.close();
