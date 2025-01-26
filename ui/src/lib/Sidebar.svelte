@@ -12,4 +12,6 @@
     <SidebarItem to="/file-actions" iconName="file" selected={selectedIndex == 4} text="File Actions"/>
     <SidebarItem to="/system-information" iconName="system-information" selected={selectedIndex == 5} text="System Information"/>
     <SidebarItem to="/flow-chart" iconName="flowchart" selected={selectedIndex == 6} text="Flow Chart"/>
+    <div class="flex-grow w-full border-[#E0E0E0] border-b-2"></div>
+    <SidebarItem to="/about" iconName="about" selected={selectedIndex == 7} text="About"/>
 </div>
