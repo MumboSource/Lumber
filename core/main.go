@@ -21,8 +21,7 @@ func communicate_progress(content string) {
 }
 
 func main() {
-	communicate_progress("Heartbeat received from backend...") // Notify the frontend that the core is starting
-	communicate_progress("Core loaded, extracting Prefetch...")
+	communicate_progress("Some logs need chopping")
 
 	prefetch_list, err := os.ReadDir("C:\\Windows\\Prefetch")
 
@@ -33,6 +32,7 @@ func main() {
 
 	finalized_prefetch_list := make(map[string]prefetch.PrefetchInfo)
 
+	communicate_progress("Finding a forest")
 	for _, file_entry := range prefetch_list {
 		file_name := file_entry.Name()
 
@@ -56,29 +56,31 @@ func main() {
 	}
 
 	if err != nil {
-		communicate_error("Stringifying PrefetchInfo failed...")
+		communicate_error("Stringifying PrefetchInfo failed")
 	}
 
 	dr, _ := os.Executable()
 
 	dr = filepath.Dir(dr)
 
-	_, err = exec.Command(dr + "\\wpv\\totemp.bat").Output()
+	communicate_progress("Sharpening our axe")
+	_, err = exec.Command(dr + "\\bin\\totemp.bat").Output()
 
 	if err != nil {
 		fmt.Println(err)
 		communicate_error("Couldn't retreive file paths for prefetch files")
 	}
 
-	wpv_out, err := os.ReadFile(dr + "\\wpv\\temp.txt")
+	bin_out, err := os.ReadFile(dr + "\\bin\\temp.txt")
 
 	if err != nil {
 		communicate_error("Couldn't retreive file paths for prefetch files")
 	}
 
-	line_split := strings.Split(string(wpv_out), "\n")
+	line_split := strings.Split(string(bin_out), "\n")
 	paths := make(map[string]string)
 
+	communicate_progress("Scouting for trees")
 	for _, line := range line_split {
 		comma_split := strings.Split(line, ",")
 
@@ -92,9 +94,13 @@ func main() {
 		paths[discovered_name] = discovered_path
 	}
 
-	export, _ := json.MarshalIndent(Export{"bundle", finalized_prefetch_list, paths}, " ", " ")
-	communicate_progress("Finalized, exporting data...")
+	communicate_progress("Chopping away")
+	journal_output, _ := exec.Command("fsutil", "usn", "readjournal", "c:", "csv").Output()
+
+	export, _ := json.MarshalIndent(Export{"bundle", finalized_prefetch_list, string(journal_output), paths}, " ", " ")
+
+	communicate_progress("Timber!")
 
 	fmt.Println(string(export))
-	fmt.Println("raise your ya ya ya!")
+
 }
