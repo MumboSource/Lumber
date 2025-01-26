@@ -4,6 +4,7 @@ import (
 	"encoding/json"
 	"fmt"
 	"os"
+	"os/exec"
 	"strings"
 
 	"github.com/Akumzy/ipc"
@@ -12,12 +13,10 @@ import (
 
 var comms *ipc.IPC
 
-/*
-
-progress
-request
-
-*/
+type Export struct {
+	PrefetchData map[string]prefetch.PrefetchInfo
+	Paths        map[string]string
+}
 
 func communicate_error(content string) {
 	comms.Send("err", content)
@@ -62,20 +61,47 @@ func main() {
 			finalized_prefetch_list[strings.Split(file_name, ".")[0]] = *pf
 		}
 
-		export, err := json.MarshalIndent(finalized_prefetch_list, " ", " ")
-
 		if err != nil {
 			communicate_error("Stringifying PrefetchInfo failed...")
 		}
 
 		dr, _ := os.Getwd()
-		out, _ := os.Create(dr + "\\yap.json")
 
-		out.WriteString(string(export))
+		_, err = exec.Command(dr + "\\wpv\\totemp.bat").Output()
+
+		if err != nil {
+			fmt.Println(err)
+			communicate_error("Couldn't retreive file paths for prefetch files")
+		}
+
+		wpv_out, err := os.ReadFile(dr + "\\wpv\\temp.txt")
+
+		if err != nil {
+			communicate_error("Couldn't retreive file paths for prefetch files")
+		}
+
+		line_split := strings.Split(string(wpv_out), "\n")
+		paths := make(map[string]string)
+
+		for _, line := range line_split {
+			comma_split := strings.Split(line, ",")
+
+			if len(comma_split) < 6 {
+				continue
+			}
+
+			fmt.Println(comma_split)
+
+			discovered_name := comma_split[5]
+			discovered_path := comma_split[6]
+
+			paths[discovered_name] = discovered_path
+		}
 
 		fmt.Println("\n\nDone!")
-		//comms.Send("finalized", string(export))
 
+		export, _ := json.MarshalIndent(Export{finalized_prefetch_list, paths}, " ", " ")
+		comms.Send("finalized", string(export))
 	}()
 
 	comms.Start()
