@@ -100,9 +100,11 @@ func main() {
 	apps := make(map[string]AppInfo)
 
 	for identifier, prefetch_item := range finalized_prefetch_list {
-		icon_base, _ := exec.Command(dr+"\\bin\\icon_extractor.exe", paths[strings.ToUpper(identifier)]).Output()
+		identifier = strings.ToUpper(identifier)
+		icon_base, _ := exec.Command(dr+"\\bin\\icon_extractor.exe", paths[identifier]).Output()
 		apps[identifier] = AppInfo{
-			paths[strings.ToUpper(identifier)],
+			identifier,
+			paths[identifier],
 			string(icon_base),
 			prefetch_item,
 		}

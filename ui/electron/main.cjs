@@ -1,6 +1,6 @@
 // Modules to control application life and create native browser window
 const { log } = require('console')
-const { app, BrowserWindow, ipcMain } = require('electron')
+const { app, BrowserWindow, ipcMain, Notification } = require('electron')
 const { spawn } = require("child_process")
 
 const path = require('path');
@@ -94,7 +94,7 @@ const createWindow = () => {
             switch (datapoint.Type) {
                 case "bundle":
                     mainWindow.webContents.send("bundle", datapoint)
-                    log("Bundle sent", datapoint)
+                    log("Bundle sent")
                 break;
 
                 default:

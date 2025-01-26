@@ -23,9 +23,13 @@ contextBridge.exposeInMainWorld(
             })
         },
 
-        onReceivedBundle: (callback) => ipcRenderer.on("bundle", (_event, value) => {
-            console.log("3")
-            callback(value)
-        })
+        onReceivedBundle: (callback) => {
+            console.log("Hooked")
+            
+            ipcRenderer.on("bundle", (_event, value) => {
+                console.log("3")
+                callback(value)
+            })
+        }
     }
 )

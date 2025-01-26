@@ -11,13 +11,21 @@
 	import '@fontsource/fira-code';
     import ExecutableDetails from './lib/pages/ExecutableDetails.svelte';
     import FlowChart from './lib/pages/FlowChart.svelte';
+	import { navigate } from "svelte-routing";
 
 	export let url = "";
 
-	export let bundle;
+	let bundles;
+	let bundleKeys;
 
 	window.electron.onReceivedBundle((data) => {
-		bundle = data;
+		console.log("Rec bundle")
+
+		bundles = data.Apps
+
+		console.log(typeof data.Apps)
+		bundleKeys = Object.keys(data.Apps)
+
         navigate("/exe-list")
     })
 
@@ -26,7 +34,7 @@
 <Router {url}>
 	<div>
 		<Route path="/exe-list">
-			<Executables bundle/>
+			<Executables bundles={bundles} bundleKeys={bundleKeys}/>
 		</Route>
 		<Route path="/exe-details">
 			<ExecutableDetails />
