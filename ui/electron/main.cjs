@@ -1,7 +1,7 @@
 // Modules to control application life and create native browser window
 const { log } = require('console')
 const { app, BrowserWindow, ipcMain } = require('electron')
-const { exec } = require("child_process")
+const { spawn } = require("child_process")
 
 const path = require('path')
 
@@ -61,36 +61,34 @@ const createWindow = () => {
     }
 
 
+    ipcMain.on("heartbeat", (e, ...args) => {
+        log("It lives!")
+    })
+
+    let new_path = __dirname.split("\\")
+    new_path.pop()
+    new_path.pop()
+    new_path.push("core")
+    new_path.push("Lumber-Core.exe")
+    new_path = new_path.join("\\")
+
+    log(new_path)
+    const backend_process = spawn(new_path)
+
     
+    backend_process.on('error', (err) => {
+        console.log('Failed to start child process.', err);
+    });
+
+    backend_process.stdout.on('data', (data) => {
+        log(data.toString())
+    })
+
+    backend_process
+
+    //log(backend_process)
+    log(backend_process.pid)
 }
-
-const windowSetSize = BrowserWindow.prototype.setSize;
-BrowserWindow.prototype.setSize = function (
-	width,
-	height,
-	animate
-) {
-	if (animate) {
-		const [startWidth, startHeight] = this.getSize();
-		const [targetWidth, targetHeight] = [width, height];
-
-		const duration = 200;
-		const easing = (t, b, c, d) => (t == d ? b + c : c * (-Math.pow(2, (-10 * t) / d) + 1) + b);
-
-		let currentFrame = 0;
-		const updateSize = () => {
-			currentFrame++;
-			windowSetSize.apply(this, [
-				Math.round(easing(currentFrame, startWidth, targetWidth - startWidth, duration)),
-				Math.round(easing(currentFrame, startHeight, targetHeight - startHeight, duration)),
-			]);
-			if (currentFrame < duration) setImmediate(updateSize);
-		};
-		setImmediate(updateSize);
-	} else {
-		windowSetSize.apply(this, [width, height]);
-	}
-};
 
 // This method will be called when Electron has finished
 // initialization and is ready to create browser windows.
