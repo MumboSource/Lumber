@@ -5,6 +5,7 @@
 	import LoadingPage from './lib/pages/LoadingPage.svelte';
 	import ApplicationInfo from './lib/pages/ApplicationInfo.svelte';
     import SystemInfo from './lib/pages/SystemInfo.svelte';
+    import FileEvents from './lib/pages/FileEvents.svelte';
 
 	import '@fontsource/lato';
 	import '@fontsource/fira-code';
@@ -18,6 +19,7 @@
 		<Route path="/exe-details" component={ExeDetails} />
 		<Route path="/exe-info" component={ApplicationInfo} />
 		<Route path="/sys-info" component={SystemInfo} />
+		<Route path="/file-events" component={FileEvents} />
 
 		<Route path="/"><LoadingPage /></Route>
 	</div>

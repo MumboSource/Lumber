@@ -6,7 +6,7 @@
     <SidebarItem url="/exe-info" iconName="appinfo" text="Application Info" />
     <SidebarItem url="/sus-exe" iconName="suspicious" text="Executables"/>
     <SidebarItem url="/activity-analysis" iconName="activity" text="Activity Analysis"/>
-    <SidebarItem url="/file-actions" iconName="file" text="File Actions"/>
+    <SidebarItem url="/file-events" iconName="file" text="File Events"/>
     <SidebarItem url="/sys-info" iconName="system-information" text="System Info"/>
     <SidebarItem url="/flow-chart" iconName="flowchart" text="Flow Chart"/>
 
