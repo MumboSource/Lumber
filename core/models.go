@@ -3,13 +3,13 @@ package main
 import "www.velocidex.com/golang/go-prefetch"
 
 type AppInfo struct {
-	path string
-	icon string
+	path     string
+	icon     string
+	Prefetch prefetch.PrefetchInfo
 }
 
 type Export struct {
-	Type         string
-	PrefetchData map[string]prefetch.PrefetchInfo
-	Journal      string
-	Paths        map[string]string
+	Type    string
+	Journal string
+	Apps    map[string]AppInfo
 }

@@ -12,12 +12,12 @@ import (
 )
 
 func communicate_error(content string) {
-	fmt.Println("{\"error\": true, \"err\": " + content + "}")
+	fmt.Println("{\"error\": true, \"err\": \"" + content + "\"}")
 	os.Exit(1)
 }
 
 func communicate_progress(content string) {
-	fmt.Println("{\"Type\": \"progress\", \"message\": " + content + "}")
+	fmt.Println("{\"Type\": \"progress\", \"message\": \"" + content + "\"}|!|/")
 }
 
 func main() {
@@ -97,10 +97,20 @@ func main() {
 	communicate_progress("Chopping away")
 	journal_output, _ := exec.Command("fsutil", "usn", "readjournal", "c:", "csv").Output()
 
-	export, _ := json.MarshalIndent(Export{"bundle", finalized_prefetch_list, string(journal_output), paths}, " ", " ")
+	apps := make(map[string]AppInfo)
+
+	for identifier, prefetch_item := range finalized_prefetch_list {
+		icon_base, _ := exec.Command(dr+"\\bin\\icon_extractor.exe", paths[strings.ToUpper(identifier)]).Output()
+		apps[identifier] = AppInfo{
+			paths[strings.ToUpper(identifier)],
+			string(icon_base),
+			prefetch_item,
+		}
+	}
+
+	export, _ := json.MarshalIndent(Export{"bundle", string(journal_output), apps}, " ", " ")
 
 	communicate_progress("Timber!")
 
-	fmt.Println(string(export))
-
+	fmt.Println(string(export) + "|!|/")
 }
