@@ -4,8 +4,10 @@
 	import '@fontsource/lato';
 </script>
 
-<MainNavbar />
-<div class="flex flex-row w-screen h-screen">
-    <Sidebar />
-    <div class="flex flex-row p-5"></div>
+<div class="flex flex-col w-screen h-screen">
+    <MainNavbar />
+    <div class="flex flex-row w-full flex-grow">
+        <Sidebar />
+        <div class="flex flex-row p-5"></div>
+    </div>
 </div>
