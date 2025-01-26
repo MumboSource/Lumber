@@ -1,6 +1,9 @@
 // Modules to control application life and create native browser window
 const { log } = require('console')
 const { app, BrowserWindow, ipcMain } = require('electron')
+const { app, BrowserWindow } = require('electron')
+const { exec } = require("child_process")
+
 const path = require('path')
 
 if (require('electron-squirrel-startup')) app.quit();
@@ -57,6 +60,9 @@ const createWindow = () => {
 
         log('Electron running in prod mode: 🚀')
     }
+
+
+    
 }
 
 const windowSetSize = BrowserWindow.prototype.setSize;
