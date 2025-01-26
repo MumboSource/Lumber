@@ -11,7 +11,6 @@
 	import '@fontsource/fira-code';
     import ExecutableDetails from './lib/pages/ExecutableDetails.svelte';
     import FlowChart from './lib/pages/FlowChart.svelte';
-	import { navigate } from "svelte-routing";
 
 	export let url = "";
 
