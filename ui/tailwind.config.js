@@ -8,7 +8,8 @@ export default {
     theme: {
         extend: {
             fontFamily: {
-                sans: 'Lato, sans-serif',
+                sans: "Lato, sans-serif",
+                mono: "'Space Mono', monospace",
             },
         },
     },

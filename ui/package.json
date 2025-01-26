@@ -33,6 +33,7 @@
   },
   "dependencies": {
     "@fontsource/lato": "^5.1.1",
+    "@fontsource/space-mono": "^5.1.2",
     "electron-squirrel-startup": "^1.0.1"
   }
 }
