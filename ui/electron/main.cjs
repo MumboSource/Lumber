@@ -3,7 +3,8 @@ const { log } = require('console')
 const { app, BrowserWindow, ipcMain } = require('electron')
 const { spawn } = require("child_process")
 
-const path = require('path')
+const path = require('path');
+const { electron } = require('process');
 
 if (require('electron-squirrel-startup')) app.quit();
 
@@ -60,11 +61,6 @@ const createWindow = () => {
         log('Electron running in prod mode: 🚀')
     }
 
-
-    ipcMain.on("heartbeat", (e, ...args) => {
-        log("It lives!")
-    })
-
     let new_path = __dirname.split("\\")
     new_path.pop()
     new_path.pop()
@@ -72,22 +68,41 @@ const createWindow = () => {
     new_path.push("Lumber-Core.exe")
     new_path = new_path.join("\\")
 
-    log(new_path)
     const backend_process = spawn(new_path)
-
     
     backend_process.on('error', (err) => {
         console.log('Failed to start child process.', err);
     });
 
     backend_process.stdout.on('data', (data) => {
-        log(data.toString())
+        data = data.toString()
+
+        // In case we take awhile to read stdout
+
+        for (let datapoint of data.split("|!|/")) {
+            if (datapoint.length < 2) {
+                return
+            }
+
+            datapoint = JSON.parse(datapoint)
+
+            if (datapoint.error) {
+                new Notification({title: "Error", body: datapoint.message}).show()
+                return
+            }
+
+            switch (datapoint.Type) {
+                case "bundle":
+                    mainWindow.webContents.send("bundle", datapoint)
+                    log("Bundle sent", datapoint)
+                break;
+
+                default:
+                    log("Escape", datapoint.Type)
+                break;
+            }
+        }
     })
-
-    backend_process
-
-    //log(backend_process)
-    log(backend_process.pid)
 }
 
 const windowSetSize = BrowserWindow.prototype.setSize;

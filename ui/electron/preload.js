@@ -14,6 +14,18 @@ contextBridge.exposeInMainWorld(
                 ipcRenderer.once("isMaximizedResponse", res);
             })
         },
-        close: () => ipcRenderer.send('close')
+        close: () => ipcRenderer.send('close'),
+        onProgressChanged: (callback) => {
+            console.log("1")
+            ipcRenderer.on('progress', (_event, value) => {
+                console.log("2")
+                callback(value)
+            })
+        },
+
+        onReceivedBundle: (callback) => ipcRenderer.on("bundle", (_event, value) => {
+            console.log("3")
+            callback(value)
+        })
     }
 )

@@ -11,11 +11,21 @@
 	import '@fontsource/fira-code';
 
 	export let url = "";
+
+	export let bundle;
+
+	window.electron.onReceivedBundle((data) => {
+		bundle = data;
+        navigate("/exe-list")
+    })
+
 </script>
 
 <Router {url}>
 	<div>
-		<Route path="/exe-list" component={Executables} />
+		<Route path="/exe-list">
+			<Executables bundle/>
+		</Route>
 		<Route path="/exe-details" component={ExeDetails} />
 		<Route path="/exe-info" component={ApplicationInfo} />
 		<Route path="/sys-info" component={SystemInfo} />

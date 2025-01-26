@@ -4,6 +4,8 @@
     import { navigate } from 'svelte-routing';
     import Navbar from '../Navbar.svelte';
 
+    export let bundle
+
     let scrollY = 0;
     let maxY = 0;
     let screenHeight = 0;
