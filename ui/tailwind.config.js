@@ -9,7 +9,7 @@ export default {
         extend: {
             fontFamily: {
                 sans: "Lato, sans-serif",
-                mono: "'Space Mono', monospace",
+                mono: "'Fira Code', monospace",
             },
         },
     },

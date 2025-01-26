@@ -6,7 +6,7 @@
 	import ApplicationInfo from './lib/pages/ApplicationInfo.svelte';
 
 	import '@fontsource/lato';
-	import '@fontsource/space-mono';
+	import '@fontsource/fira-code';
 
 	export let url = "";
 </script>
