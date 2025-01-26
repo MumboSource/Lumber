@@ -1,6 +1,6 @@
 // Modules to control application life and create native browser window
 const { log } = require('console')
-const { app, BrowserWindow } = require('electron')
+const { app, BrowserWindow, ipcMain } = require('electron')
 const path = require('path')
 
 if (require('electron-squirrel-startup')) app.quit();
@@ -30,12 +30,14 @@ const createWindow = () => {
         width: 1280,
         height: 832,
         maximizable: false,
+        titleBarStyle: "hidden",
+        ...(process.platform !== 'darwin' ? { titleBarOverlay: false } : {}),
         webPreferences: {
             preload: path.join(__dirname, 'preload.js')
         }
     })
 
-    mainWindow.setMenu(null)
+    mainWindow.setMenu(null);
 
     // define how electron will load the app
     if (isDevEnvironment) {
@@ -70,6 +72,18 @@ app.on('activate', () => {
     // dock icon is clicked and there are no other windows open.
     if (BrowserWindow.getAllWindows().length === 0) createWindow()
 })
+
+ipcMain.on("minimize", () => {
+    mainWindow.minimize();
+});
+
+ipcMain.on("maximize", () => {
+    mainWindow.maximize();
+});
+
+ipcMain.on("close", () => {
+    mainWindow.close();
+});
 
 // Quit when all windows are closed, except on macOS. There, it's common
 // for applications and their menu bar to stay active until the user quits

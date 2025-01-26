@@ -1,9 +1,10 @@
-const { contextBridge } = require('electron')
+const { contextBridge, ipcRenderer } = require('electron')
 
-const api = {
-    node: () => process.versions.node,
-    chrome: () => process.versions.chrome,
-    electron: () => process.versions.electron
-}
-
-contextBridge.exposeInMainWorld('api', api)
+contextBridge.exposeInMainWorld(
+    'electron',
+    {
+        minimize: () => ipcRenderer.send('minimize'),
+        maximize: () => ipcRenderer.send('maximize'),
+        close: () => ipcRenderer.send('close')
+    }
+)
