@@ -8,7 +8,7 @@ export default {
     theme: {
         extend: {
             fontFamily: {
-                lato: 'lato, sans-serif, serif',
+                sans: 'Lato, sans-serif',
             },
         },
     },

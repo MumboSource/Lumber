@@ -17,8 +17,6 @@
   },
   "devDependencies": {
     "@electron-forge/cli": "^7.6.0",
-    "@electron-forge/maker-deb": "^7.6.0",
-    "@electron-forge/maker-rpm": "^7.6.0",
     "@electron-forge/maker-squirrel": "^7.6.0",
     "@electron-forge/maker-zip": "^7.6.0",
     "@sveltejs/vite-plugin-svelte": "^5.0.3",
@@ -34,6 +32,7 @@
     "vite": "^6.0.7"
   },
   "dependencies": {
+    "@fontsource/lato": "^5.1.1",
     "electron-squirrel-startup": "^1.0.1"
   }
 }
