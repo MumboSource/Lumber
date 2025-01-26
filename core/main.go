@@ -6,10 +6,17 @@ import (
 	"os"
 	"os/exec"
 	"path/filepath"
+	"runtime"
 	"strings"
 
+	"github.com/shirou/gopsutil/cpu"
+	"github.com/shirou/gopsutil/mem"
+	"github.com/yusufpapurcu/wmi"
 	"www.velocidex.com/golang/go-prefetch"
 )
+
+var osInfo []Win32_OperatingSystem
+var osProduct []Win32_ComputerSystemProduct
 
 func communicate_error(content string) {
 	fmt.Println("{\"error\": true, \"err\": \"" + content + "\"}")
@@ -94,6 +101,25 @@ func main() {
 		paths[discovered_name] = discovered_path
 	}
 
+	err = wmi.Query("SELECT Caption, Version, SerialNumber FROM Win32_OperatingSystem", &osInfo)
+
+	if err != nil {
+		communicate_error("Failed to query WMI: " + err.Error())
+	}
+
+	err = wmi.Query("SELECT UUID FROM Win32_ComputerSystemProduct", &osProduct)
+	if err != nil {
+		communicate_error("Failed to query WMI: " + err.Error())
+	}
+
+	ram, _ := mem.VirtualMemory()
+	ram_gb := float64(ram.Total) / 1e9
+	ram_used := float64(ram.Used) / 1e9
+
+	cpuInfo, _ := cpu.Info()
+	cpuUsage, _ := cpu.Percent(0, false)
+	cpuModel := cpuInfo[0].ModelName
+
 	communicate_progress("Chopping away")
 	journal_output, _ := exec.Command("fsutil", "usn", "readjournal", "c:", "csv").Output()
 
@@ -110,7 +136,9 @@ func main() {
 		}
 	}
 
-	export, _ := json.MarshalIndent(Export{"bundle", string(journal_output), apps}, " ", " ")
+	hostname, _ := os.Hostname()
+
+	export, _ := json.MarshalIndent(Export{"bundle", string(journal_output), apps, hostname, osInfo[0].Caption, osProduct[0].UUID, runtime.GOARCH, osInfo[0].Version, osInfo[0].SerialNumber, ram_gb, ram_used, cpuUsage, cpuModel}, " ", " ")
 
 	communicate_progress("Timber!")
 
