@@ -68,7 +68,7 @@ const createWindow = () => {
     new_path.push("Lumber-Core.exe")
     new_path = new_path.join("\\")
 
-    const backend_process = spawn(new_path)
+    /*const backend_process = spawn(new_path)
     
     backend_process.on('error', (err) => {
         console.log('Failed to start child process.', err);
@@ -102,7 +102,7 @@ const createWindow = () => {
                 break;
             }
         }
-    })
+    })*/
 }
 
 const windowSetSize = BrowserWindow.prototype.setSize;

@@ -34,6 +34,7 @@
   "dependencies": {
     "@fontsource/fira-code": "^5.1.1",
     "@fontsource/lato": "^5.1.1",
-    "electron-squirrel-startup": "^1.0.1"
+    "electron-squirrel-startup": "^1.0.1",
+    "svelvet": "^10.0.2"
   }
 }

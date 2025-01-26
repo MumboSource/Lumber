@@ -1,7 +1,7 @@
 <script>
 	import Executables from './lib/pages/Executables.svelte';
 	import ExeDetails from './lib/pages/ExecutableDetails.svelte';
-	import { Router, Link, Route } from "svelte-routing";
+	import { Router, Link, Route, navigate } from "svelte-routing";
 	import LoadingPage from './lib/pages/LoadingPage.svelte';
 	import ApplicationInfo from './lib/pages/ApplicationInfo.svelte';
     import SystemInfo from './lib/pages/SystemInfo.svelte';
