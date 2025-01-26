@@ -4,6 +4,7 @@
     import { navigate } from "svelte-routing";
 
     import rightArrow from '../../assets/right-arrow.svg'
+    import defaultPfp from '../../assets/default-pfp.png'
 
     let users = [
         "Ruadhan KellerMcLeer",
@@ -33,7 +34,7 @@
                     <div class="overflow-y-scroll no-scrollbar">
                         {#each users as user}
                             <div class="flex border-x-2 border-b-2 border-[#E0E0E0] p-3 items-center h-16">
-                                <img alt="pfp" />
+                                <img class="pr-3" src={defaultPfp} alt="pfp" />
                                 <div class="flex flex-col grow">
                                     <div class=" text-xl">{user}</div>
                                     <div class="text-sm opacity-50">Last Logon: 11/12/24</div>
