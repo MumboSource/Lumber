@@ -18,22 +18,6 @@
     <Navbar title="Goat executable" maximizable={true} />
     <div class="flex flex-row w-full grow">
         <Sidebar />
-        <!-- <div class="flex flex-col grow max-h-[calc(100vh-4rem)] overflow-y-scroll">
-            <div class="flex w-full h-8 items-center bg-[#F2F2F2] border-b-2 border-[#B4B4B4]">
-                <div class="w-8 h-full flex border-r-2 border-[#B4B4B4] text-[#797979] font-bold px-2 items-center justify-center">?</div>
-                <div class="grow-[6] h-full border-r-2 border-[#B4B4B4] text-[#797979] font-bold px-2 flex items-center ">TIMESTAMP</div>
-                <div class="grow-[2] h-full border-r-2 border-[#B4B4B4] text-[#797979] font-bold px-2 flex items-center">EVENT TYPE</div>
-                <div class="grow-[8] h-full border-r-2 border-[#B4B4B4] text-[#797979] font-bold px-2 flex items-center">EVENT TARGET</div>
-            </div>
-            {#each fileEvents as fileEvent}
-                <div class="flex w-full h-8 items-center border-b-2 border-[#B4B4B4]">
-                    <div class="w-8 h-full flex px-2 items-center justify-center">?</div>
-                    <div class="grow-[6] h-full px-2 flex items-center ">{new Date()}</div>
-                    <div class="grow-[2] h-full px-2 flex items-center">EVENT TYPE</div>
-                    <div class="grow-[8] h-full px-2 flex items-center">EVENT TARGET</div>
-                </div>  
-            {/each}
-        </div> -->
 
         <div class="flex flex-col max-h-[calc(100vh-4rem)] w-[calc(100vw-18rem)] overflow-y-scroll">
             <table class="w-full h-full">
