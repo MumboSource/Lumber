@@ -26,7 +26,7 @@
     </div>
 </div>
 <div class="flex p-3 h-16 w-full gap-3 items-center absolute bottom-0" style="border-top: 2px solid #E1E1E1;">
-    <button class="w-full h-full transition-all bg-[#4394EB] text-white hover:bg-[#4394ebc4]" on:click={() => navigate("/exe-list")} >
+    <button class="w-full h-full transition-all bg-[#4394EB] text-white hover:bg-[#4394ebc4]" on:click={() => navigate("/exe-info")} >
         Set as Start Point
     </button>
 </div>
