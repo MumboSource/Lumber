@@ -11,6 +11,7 @@
 	import '@fontsource/fira-code';
     import ExecutableDetails from './lib/pages/ExecutableDetails.svelte';
     import FlowChart from './lib/pages/FlowChart.svelte';
+	import SuspiciousExecutables from './lib/pages/SuspiciousExecutables.svelte';
 
 	export let url = "";
 
@@ -49,6 +50,9 @@
 		</Route>
 		<Route path="/file-events">
 			<FileEvents />
+		</Route>
+		<Route path="/sus-exe">
+			<SuspiciousExecutables />
 		</Route>
 
 		<Route path="/"><LoadingPage /></Route>
