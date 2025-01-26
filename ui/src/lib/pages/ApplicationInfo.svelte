@@ -9,7 +9,7 @@
     <Navbar title="Goat executable" maximizable={true} />
     <div class="flex flex-row w-full">
         <Sidebar />
-        <div class="flex flex-row p-5 gap-6 flex-grow overflow-y-scroll max-h-[calc(100vh-4rem)]">
+        <div class="flex flex-row p-5 gap-6 flex-grow overflow-y-scroll max-h-[calc(100vh-4rem)] no-scrollbar">
             <div class="flex flex-col gap-6 flex-1">
                 <p class="font-mono bg-[#F0F0F0] py-3 px-4 rounded-md text-3xl w-full">McAfee_CRACK.exe</p>
                 {#each {length: 15} as i}

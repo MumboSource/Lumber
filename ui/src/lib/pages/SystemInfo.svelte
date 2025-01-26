@@ -13,6 +13,10 @@
         "Ruadhan KellerMcLeer",
         "Tim Timbers",
     ];
+
+    const openSettingsLink = () => {
+        require('child_process').spawn('control', ['timedate.cpl'])
+    }
 </script>
 
 <div class="flex flex-col w-screen h-screen">
@@ -63,15 +67,33 @@
                 </div>
             </div>
             <div class="px-6">
-                <div class="flex flex-col w-full">
-                    <div class="flex grow">
-                        <div class="flex flex-col">
+                <div class="flex flex-col w-full gap-4">
+                    <div class="flex">
+                        <div class="flex flex-col grow">
+                            <div class="opacity-50">Device Name</div>
+                            <div class="text-xl">Sigma Laptop</div>
+                        </div>
+                        <div class="flex flex-col grow">
                             <div class="opacity-50">Device Name</div>
                             <div class="text-xl">Sigma Laptop</div>
                         </div>
                     </div>
-                    <div class="flex grow">
-                        <div class="flex flex-col">
+                    <div class="flex">
+                        <div class="flex flex-col grow">
+                            <div class="opacity-50">Device Name</div>
+                            <div class="text-xl">Sigma Laptop</div>
+                        </div>
+                        <div class="flex flex-col grow">
+                            <div class="opacity-50">Device Name</div>
+                            <div class="text-xl">Sigma Laptop</div>
+                        </div>
+                    </div>
+                    <div class="flex">
+                        <div class="flex flex-col grow">
+                            <div class="opacity-50">Device Name</div>
+                            <div class="text-xl">Sigma Laptop</div>
+                        </div>
+                        <div class="flex flex-col grow">
                             <div class="opacity-50">Device Name</div>
                             <div class="text-xl">Sigma Laptop</div>
                         </div>
