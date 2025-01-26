@@ -2,12 +2,14 @@
     import { navigate } from "svelte-routing";
 
     setTimeout(() => {
-        console.log("a")
         navigate("/exe-list") 
-    }, 500)
+    }, 100000)
 </script>
 
-<div class="flex w-full h-full items-center justify-center">
-    Logo Here 👅
-    <img />
+<div class="flex flex-col w-screen h-screen items-center justify-center gap-6">
+    <img alt="logo" />
+    <div class="flex flex-col items-center">
+        Lumber is loading...
+        <img alt="loading gif" />
+    </div>
 </div>

@@ -8,7 +8,7 @@
 </script>
 
 <Router {url}>
-	<div class="w-full h-full">
+	<div>
 		<Route path="/exe-list" component={Executables} />
 		<Route path="/exe-details" component={ExeDetails} />
 		<Route path="/"><LoadingPage /></Route>
