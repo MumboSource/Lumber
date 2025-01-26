@@ -4,6 +4,7 @@
 	import { Router, Link, Route } from "svelte-routing";
 	import LoadingPage from './lib/pages/LoadingPage.svelte';
 	import ApplicationInfo from './lib/pages/ApplicationInfo.svelte';
+    import SystemInfo from './lib/pages/SystemInfo.svelte';
 
 	import '@fontsource/lato';
 	import '@fontsource/fira-code';
@@ -15,7 +16,9 @@
 	<div>
 		<Route path="/exe-list" component={Executables} />
 		<Route path="/exe-details" component={ExeDetails} />
-		<Route path="/exe-info"><ApplicationInfo /></Route>
+		<Route path="/exe-info" component={ApplicationInfo} />
+		<Route path="/sys-info" component={SystemInfo} />
+
 		<Route path="/"><LoadingPage /></Route>
 	</div>
 </Router>
