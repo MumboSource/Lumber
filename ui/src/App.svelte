@@ -15,7 +15,7 @@
 	<div>
 		<Route path="/exe-list" component={Executables} />
 		<Route path="/exe-details" component={ExeDetails} />
-		<!-- <Route path="/"><LoadingPage /></Route> -->
-		<Route path="/"><ApplicationInfo /></Route>
+		<Route path="/exe-info"><ApplicationInfo /></Route>
+		<Route path="/"><LoadingPage /></Route>
 	</div>
 </Router>
