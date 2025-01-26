@@ -1,6 +1,7 @@
 <script>
     import testIcon from '../assets/test-img.png'
     import rightArrow from '../assets/right-arrow.svg'
+    import { navigate } from 'svelte-routing';
 
     let scrollY = 0;
     let maxY = 0;
@@ -35,13 +36,15 @@
                 <div class="font-normal text-2xl text-ellipsis overflow-hidden text-nowrap">{exe}</div>
                 <div class="font-normal text-base text-[#00000080] text-ellipsis overflow-hidden text-nowrap">Signed by Gus Inc.</div>
             </div>
-            <img src={rightArrow} alt="select" class="nextButton w-12 cursor-pointer rounded-[5px] transition-all" />
+            <button on:click={() => navigate("/exe-details")} >
+                <img src={rightArrow} alt="select" class="nextButton w-12 rounded-[5px] transition-all" />
+            </button>
         </div>
     {/each}
 </div>
 
 <style>
 .nextButton:hover {
-    box-shadow: inset 0 0 0 99999px rgba(0, 0, 0, 0.1);
+    background-color: #d9d9d9;
 }
 </style>
